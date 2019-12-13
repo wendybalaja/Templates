@@ -4,8 +4,7 @@ int main() {
 
     // Some miscellaneous code to get you started on testing your sets.
     // The following should work:
-    cout<<"Hello World"; 
-      
+
     std_simple_set<int> R;
     R += 3;
     cout << "3 is " << (R.contains(3) ? "" : "not ") << "in R\n";
@@ -49,9 +48,15 @@ int main() {
     // if (X->contains(8)) cout << "8 is now in X\n";
     // if (X->contains(9)) cout << "9 is now in X\n";
 
-    // simple_set<weekday>* V = new carray_simple_set<weekday>(mon, (weekday)5);
+   simple_set<weekday>* V = new carray_simple_set<weekday>(mon, (weekday)5);
 
-    // hashed_simple_set<int, cast_to_int<int>> H(100);
+    hashed_simple_set<int, cast_to_int<int>> H(100);
+    H+= 4; H+= 10; H+= 98;
+    cout << "10 is " << (H.contains(10) ? "" : "not ") << "in H\n";
+    cout << "19 is " << (H.contains(19) ? "" : "not ") << "in H\n";
 
+    hashed_simple_set<double, cast_to_int<double>> H1(20);
+    H1+= 3.14; H1+= 1.9;
+    cout << "pi is " << (H1.contains(3.14) ? "" : "not ") << "in H1\n";
     // bin_search_simple_set<double> J(100);
 }
