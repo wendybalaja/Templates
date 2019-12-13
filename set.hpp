@@ -142,9 +142,10 @@ class carray_simple_set : public virtual simple_set<T> {
     }
 
     /// destructor
-    virtual ~carray_simple_set() {              
-        // your code here
+    virtual ~carray_simple_set() {
+        delete ptr;
     }
+    
     virtual carray_simple_set<T>& operator+=(const T item) {
         if( item >= H || item < L) throw out_bounds_err;
         *(ptr+((int)item - (int)L)) = true;
