@@ -74,22 +74,37 @@ int main() {
 
     J += 1;
         J.showSet();
+    printf("--------------\n");
     J -= 1;
             J.showSet();
+    printf("--------------\n");
+
     J += 2;
         J.showSet();
+            printf("--------------\n");
+
 
     J += 3;
         J.showSet();
+            printf("--------------\n");
+
     J += 5;
         J.showSet();
+            printf("--------------\n");
+
 
     J += 4;
         J.showSet();
+            printf("--------------\n");
+
     J -= 1;
             J.showSet();
+                printf("--------------\n");
+
     J -= 3;
             J.showSet();
+                printf("--------------\n");
+
     cout << "4 is " << (J.contains(4) ? "" : "not ") << "in J\n";
 
 

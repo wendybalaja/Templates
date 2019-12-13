@@ -321,6 +321,11 @@ class bin_search_simple_set : public virtual simple_set<T> {
           delete ptr;
       }
 
+      virtual bool contains(const T& item) const {
+        int index = binary_search_remove(ptr, item, 0, size-1);
+        return (index != -1);
+      }
+
       virtual bin_search_simple_set<T, C>& operator+=(const T item) {
         //variable size holds the current size of the array, if it is equal to max at the start
         //of an insert, then we throw overflow.
@@ -338,7 +343,7 @@ class bin_search_simple_set : public virtual simple_set<T> {
 
         }
 
-        printf("index is : %d to insert %d current size is : %d\n",index, (int)item,size);
+        //printf("index is : %d to insert %d current size is : %d\n",index, (int)item,size);
 
         //if the index is -1, that means the element already exists in the set
         if(index == -1){
@@ -376,7 +381,7 @@ class bin_search_simple_set : public virtual simple_set<T> {
         index = binary_search_remove(ptr, item, 0, size-1);
 
 
-        printf("index is : %d to remove %d current size is : %d\n",index, (int)item,size);
+        //printf("index is : %d to remove %d current size is : %d\n",index, (int)item,size);
 
         //if the index is -1, that means the element does not exists in the set
         if(index == -1){
@@ -396,14 +401,10 @@ class bin_search_simple_set : public virtual simple_set<T> {
 
       }
 
-      virtual bool contains(const T& item) const {
-        int index = binary_search_remove(this->ptr, item, 0, size-1);
-        return (0 != -1);
-      }
 
       //returns -1 if the element already exists in the array
       int binary_search(T ptr[], T item, int low, int high){
-        printf("high is %d low is %d middle is %d item is %d\n", high,low,((high+low)/2),(int) item);
+        //printf("high is %d low is %d middle is %d item is %d\n", high,low,((high+low)/2),(int) item);
 
         if(high <= low){
             if(cmp.precedes(item,ptr[low])){
@@ -427,8 +428,7 @@ class bin_search_simple_set : public virtual simple_set<T> {
 
       }
 
-     int binary_search_remove(T ptr[], T item, int low, int high){
-        printf("to remove high is %d low is %d middle is %d item is %d\n", high,low,((high+low)/2),(int) item);
+     int binary_search_remove(T ptr[], T item, int low, int high) const{
 
         // if(high <= low){
         //     return -1; //element not found
