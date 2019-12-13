@@ -201,7 +201,7 @@ class hashed_simple_set : public virtual simple_set<T> {
     /// F(e) is never 0.)
   public:
     /// constructor
-    hashed_simple_set(const int n): H(n), P(13) {    
+    hashed_simple_set(const int n): H(n), P(bigger_prime(n)) {    
        
         ptr = new T[P];
     }
@@ -256,6 +256,29 @@ class hashed_simple_set : public virtual simple_set<T> {
 
        return false;
     }
+    int bigger_prime(int n){
+    	int i = 0;
+	//check if there is a prime somewhere within the next 1000 numbers.
+	while(i<1000){
+	 if(prime(n+i)){
+	 	return n+1;
+	 }
+	 i++;
+	}
+	return 101;
+    }
+    bool prime(int n){
+    	if(n <= 1){
+	    return true;
+	}
+	for(int i = 2; i < n; i++){
+	    if(n % i == 0){
+	    return false;
+	    }
+	}
+	return true;
+
+    }
 
 
 };
@@ -271,6 +294,8 @@ class hashed_simple_set : public virtual simple_set<T> {
 template<typename T, typename C = comp<T>>
 class bin_search_simple_set : public virtual simple_set<T> {
     /// You'll need some data members here.
+  C cmp;
+  T H;
   public:
     /// and some methods
 };
@@ -287,7 +312,7 @@ class increment {
   public:
     T operator()(T a) const {
 	// cast to integer, increment by 1, recast to (T)
-        return (T)(((int) a)++);
+        return (T)(((int) a)+1);
     }
 };
 
@@ -330,22 +355,25 @@ class range {
             && (cmp.precedes(item, H) || (Hinc && cmp.equals(item, H))));
     }
     bool precedes(const range<T, C>& other) const {
-	    if((precedes(H, other.L)||(cmp.equals(H,other.L)&&(!Hinc)&&(!other.Linc))){
-	    	return true;
-	    }
-	    return false;
+        if((precedes(H, other.L))||((cmp.equals(H,other.L))&&(!Hinc)&&(!other.Linc))){
+           return true; 
+        }
+        return false;
     }
+
+
     bool overlaps(const range<T, C>& other) const {
-	    if(!((cmp.precedes(other.H,L))||(cmp.precedes(H,other.L)))){
-	    	return true;
-	    }
-	    else{
-	    	if(((Hinc)&&(other.Linc)&&(cmp.equals(H, other.L))||((Linc)&&(other.Hinc)&&(cmp.equals(L, other.H))){
-	 		return true;
-		}
-	    }
-	    return false;
+            if(!((cmp.precedes(other.H,L))||(cmp.precedes(H,other.L)))){
+                return true;
+            }
+            else{
+                if(((Hinc)&&(other.Linc)&&(cmp.equals(H, other.L)))||((Linc)&&(other.Hinc)&&(cmp.equals(L, other.H)))){
+                    return true;
+                }
+            }
+            return false;
     }
+
 
 
     
@@ -433,13 +461,14 @@ template<typename T, typename C = comp<T>, typename I = increment<T>>
 class carray_range_set : public virtual range_set<T, C> {
     // 'virtual' on range_set ensures single copy if multiply inherited
     static_assert(std::is_integral<T>::value, "Integral type required.");
+    C cmp;
     I inc;
   public:
     /**
      * @throws out_of_bounds 
      */
    virtual carray_range_set<T, C, I>& operator+=(const range<T, C> r){
-        for(int i = )
+        
    };
 
     /**
