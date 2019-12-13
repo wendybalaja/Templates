@@ -426,7 +426,7 @@ class carray_range_set : public virtual range_set<T, C>, public carray_simple_se
 
     /* std_range_set */
     carray_range_set(const T l, const T h) : carray_simple_set<T>(l, h), cmp(), inc() {}
-    
+
     virtual carray_simple_set<T>& operator+=(const T item) {
         return carray_simple_set<T>::operator+=(item);
     }
@@ -440,6 +440,7 @@ class carray_range_set : public virtual range_set<T, C>, public carray_simple_se
     }
 
     virtual range_set<T>& operator+=(const range<T, C> r) {
+      
         for (T i = (r.closed_low() ? r.low() : inc(r.low()));
                 r.contains(i); i = inc(i)) {
             *this += i;
