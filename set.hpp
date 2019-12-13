@@ -539,6 +539,50 @@ class range {
             return false;
     }
 
+    bool equals(const range<T, C>& other) const {
+
+        if(cmp.equals(H, other.H) && (cmp.equals(L, other.L)) && (Linc == other.Linc) && (Hinc == other.Hinc)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    range merge(const range<T, C>& other) const {
+
+        T newL;
+        T newH;
+        T newLinc;
+        T newHinc;
+        if(cmp.precedes(L,other.L)){
+            newL = L;
+            newLinc = Linc;
+        }else if(cmp.equals(L,other.L)){
+            newL = L;
+            newLinc = other.Linc || Linc;
+        }else{
+            newL = other.L;
+            newLinc = other.Linc;
+        }
+
+        if(cmp.precedes(H,other.H)){
+            newH = other.H;
+            newHinc = other.Hinc;
+        }else if(cmp.equals(H,other.H)){
+            newH = H;
+            newHinc = other.Hinc || Hinc;
+        }else{
+            newH = H;
+            newHinc = Hinc;
+        }
+
+
+    return range<T,C>(newL, newLinc, newH, newHinc);
+
+    }
+
+
 
 
     
@@ -698,11 +742,59 @@ class hashed_range_set : public virtual range_set<T, C> {
 template<typename T, typename C = comp<T>>
 class bin_range_set : public virtual range_set<T, C> {
     // 'virtual' on range_set ensures single copy if multiply inherited
+     const int MAX;
+     int size;
+     range<T,C>* ptr;
+     static const out_of_bounds out_bounds_err;
+     static const overflow overflow_err;
+     C cmp;
+
+
   public:
     /**
      * @throws overflow
      */
    // virtual bin_range_set<T, C>& operator+=(const range<T, C> r) throw(overflow) = 0;
+
+          /// constructor
+      bin_range_set(const int max): MAX(max) {   
+         
+        ptr = new range<T,C>[max];/* create an array of T's */
+        size = 0; // new set has size 0
+
+      }
+      //to make sure that the compiler knows exactly what operator to call
+      //similar to carray
+      virtual bin_search_simple_set<T,C>& operator+=(const T item){
+          return bin_search_simple_set<T,C>::operator+=(item);
+      }
+      virtual bin_search_simple_set<T,C>& operator-=(const T item){
+          return bin_search_simple_set<T,C>::operator-=(item);
+      }
+      virtual bin_range_set<T,C>& operator+=(const range<T, C> item) {
+        //variable size holds the current size of the array, if it is equal to max at the start
+        //of an insert, then we throw overflow.
+        if(size == MAX){
+            throw overflow_err;
+        }
+        // int index;
+        // if(size == 0){
+        //     index = 0;
+        // }
+        // else {
+        //     index = binary_search(ptr, item, 0, size-1);
+
+        // }
+
+        //test for equality
+        //test for overlap, if so merge
+        //
+
+
+      }
+
+
+
 };
 
 //===============================================================
