@@ -385,6 +385,7 @@ class std_range_set : public virtual range_set<T, C>,
     // versions of the simple_set methods already found in std_simple_set
     // (given true multiple inheritance it can't be sure it should do that
     // unless we tell it).
+
     virtual std_simple_set<T>& operator+=(const T item) {
         return std_simple_set<T>::operator+=(item);
     }
@@ -414,11 +415,45 @@ class std_range_set : public virtual range_set<T, C>,
 
 /// Fill out
 template<typename T, typename C = comp<T>, typename I = increment<T>>
-class carray_range_set : public virtual range_set<T, C> {
+class carray_range_set : public virtual range_set<T, C>, public carray_simple_set<T> {
     // 'virtual' on range_set ensures single copy if multiply inherited
     static_assert(std::is_integral<T>::value, "Integral type required.");
     I inc;
+    C cmp;
+    static const out_of_bounds out_bounds_err;
+
   public:
+
+    /* std_range_set */
+    carray_range_set(const T l, const T h) : carray_simple_set<T>(l, h), cmp(), inc() {}
+    
+    virtual carray_simple_set<T>& operator+=(const T item) {
+        return carray_simple_set<T>::operator+=(item);
+    }
+
+    virtual carray_simple_set<T>& operator-=(const T item) {
+        return carray_simple_set<T>::operator-=(item);
+    }
+
+    virtual bool contains(const T& item) const {
+        return carray_simple_set<T>::contains(item);
+    }
+
+    virtual range_set<T>& operator+=(const range<T, C> r) {
+        for (T i = (r.closed_low() ? r.low() : inc(r.low()));
+                r.contains(i); i = inc(i)) {
+            *this += i;
+        }
+        return *this;
+    }
+
+    virtual range_set<T>& operator-=(const range<T, C> r) {
+        for (T i = (r.closed_low() ? r.low() : inc(r.low()));
+                r.contains(i); i = inc(i)) {
+            *this -= i;
+        }
+        return *this;
+    }
     /**
      * @throws out_of_bounds 
      */
