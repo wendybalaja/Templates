@@ -146,7 +146,7 @@ class carray_simple_set : public virtual simple_set<T> {
     virtual ~carray_simple_set() {
         delete ptr;
     }
-    
+
     virtual carray_simple_set<T>& operator+=(const T item) {
         if( item >= H || item < L) throw out_bounds_err;
         *(ptr+((int)item - (int)L)) = true;
@@ -418,7 +418,9 @@ class carray_range_set : public virtual range_set<T, C> {
     /**
      * @throws out_of_bounds 
      */
-   // virtual carray_range_set<T, C, I>& operator+=(const range<T, C> r) throw(out_of_bounds) = 0;
+   virtual carray_range_set<T, C, I>& operator+=(const range<T, C> r){
+        for(int i = )
+   };
 
     /**
      * @throws out_of_bounds 

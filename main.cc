@@ -21,10 +21,10 @@ int main() {
     cout << "\"hello\" is " << (U.contains("hello") ? "" : "not ") << "in U\n";
     cout << "\"foo\" is " << (U.contains("foo") ? "" : "not ") << "in U\n";
 
-    // range<string> r1("a", true, "f", true);
-    // cout << "\"b\" is " << (r1.contains("b") ? "" : "not ") << "in r1\n";
-    // cout << "\"aaa\" is " << (r1.contains("aaa") ? "" : "not ") << "in r1\n";
-    // cout << "\"faa\" is " << (r1.contains("faa") ? "" : "not ") << "in r1\n";
+    range<string> r1("a", true, "f", true);
+    cout << "\"b\" is " << (r1.contains("b") ? "" : "not ") << "in r1\n";
+    cout << "\"aaa\" is " << (r1.contains("aaa") ? "" : "not ") << "in r1\n";
+    cout << "\"faa\" is " << (r1.contains("faa") ? "" : "not ") << "in r1\n";
 
     // range<const char*, lexico_less> r2("a", true, "f", true);
     // cout << "\"b\" is " << (r2.contains("b") ? "" : "not ") << "in r2\n";
