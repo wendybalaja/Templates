@@ -139,6 +139,7 @@ class carray_simple_set : public virtual simple_set<T> {
        
       if(l>h) throw out_bounds_err; /*handle exception if left bound is bigger than right bound*/
       ptr = new bool[H-L];/* create an array of booleans */
+        // (void) l;  (void) h;
     }
 
     /// destructor
@@ -190,20 +191,19 @@ template<typename T, typename F = cast_to_int<T>>
 class hashed_simple_set : public virtual simple_set<T> {
     /// 'virtual' on simple_set ensures single copy if multiply inherited
   
-   int H; /*hash table size*/
-   int P; /*hash prime number*/
-   T* ptr; 
+   int H; /*hash prime number*/
+   int P; /*hash table size*/
+   T * ptr; 
    static const overflow overflow_err;
-
     /// I recommend you pick a hash table size p that is a prime
     /// number >= n, use F(e) % p as your hash function, and rehash
     /// with kF(e) % p after the kth collision.  (But make sure that
     /// F(e) is never 0.)
   public:
     /// constructor
-    hashed_simple_set(const int n): H(n), P(13), ptr(new T[P]) {    
+    hashed_simple_set(const int n): H(n), P(13) {    
        
-        //ptr = new T[P];
+        ptr = new T[P];
     }
 
     /// destructor
@@ -211,12 +211,11 @@ class hashed_simple_set : public virtual simple_set<T> {
 
     virtual hashed_simple_set<T, F>& operator+=(const T item) {
         int hash; 
-        int item_mod = (F()(item)) % H;
 
-        if( item_mod == 0){
+        if(F(item) % H == 0){
           hash = 1; /* make sure F(e) is never 0 */
         }else{
-          hash = item_mod;
+          hash = F(item) % H;
         }
 
         if((*(ptr+hash) != item) && (*(ptr+hash) != (T)0)){
@@ -238,24 +237,21 @@ class hashed_simple_set : public virtual simple_set<T> {
     }
     virtual hashed_simple_set<T, F>& operator-=(const T item) {
         
-        int item_mod = (F()(item)) % H;
         for(int i=1; i<= P; i++){
-          if(*(ptr+i* item_mod) == item){
-            *(ptr+i*item_mod) == (T)0;
+          if(*(ptr+i*F(item)%H) == item){
+            *(ptr+i*F(item)%H) == (T)0;
             return *this;
           }
         }
         return *this;
     }
     virtual bool contains(const T& item) const {
-
-      int item_mod = (F()(item)) % H;
-
-       if (item_mod == 0){
-        item_mod = 1;
+       int hash = (F(item) % H);
+       if (hash == 0){
+        hash = 1;
        }
        for (int i=1; i<=P; i++){
-        if(*(ptr+i*item_mod) == item) return true;
+        if(*(ptr+i*hash) == item) return true;
        }
 
        return false;
@@ -290,7 +286,8 @@ class increment {
     static_assert(std::is_integral<T>::value, "Integral type required.");
   public:
     T operator()(T a) const {
-        return ++a;
+	// cast to integer, increment by 1, recast to (T)
+        return (T)(((int) a)++);
     }
 };
 
@@ -332,6 +329,25 @@ class range {
         return ((cmp.precedes(L, item) || (Linc && cmp.equals(L, item)))
             && (cmp.precedes(item, H) || (Hinc && cmp.equals(item, H))));
     }
+    bool precedes(const range<T, C>& other) const {
+	    if((precedes(H, other.L)||(cmp.equals(H,other.L)&&(!Hinc)&&(!other.Linc))){
+	    	return true;
+	    }
+	    return false;
+    }
+    bool overlaps(const range<T, C>& other) const {
+	    if(!((cmp.precedes(other.H,L))||(cmp.precedes(H,other.L)))){
+	    	return true;
+	    }
+	    else{
+	    	if(((Hinc)&&(other.Linc)&&(cmp.equals(H, other.L))||((Linc)&&(other.Hinc)&&(cmp.equals(L, other.H))){
+	 		return true;
+		}
+	    }
+	    return false;
+    }
+
+
     
 };
 
