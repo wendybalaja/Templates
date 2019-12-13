@@ -139,7 +139,6 @@ class carray_simple_set : public virtual simple_set<T> {
        
       if(l>h) throw out_bounds_err; /*handle exception if left bound is bigger than right bound*/
       ptr = new bool[H-L];/* create an array of booleans */
-        // (void) l;  (void) h;
     }
 
     /// destructor
@@ -190,19 +189,20 @@ template<typename T, typename F = cast_to_int<T>>
 class hashed_simple_set : public virtual simple_set<T> {
     /// 'virtual' on simple_set ensures single copy if multiply inherited
   
-   int H; /*hash prime number*/
-   int P; /*hash table size*/
-   T * ptr; 
+   int H; /*hash table size*/
+   int P; /*hash prime number*/
+   T* ptr; 
    static const overflow overflow_err;
+
     /// I recommend you pick a hash table size p that is a prime
     /// number >= n, use F(e) % p as your hash function, and rehash
     /// with kF(e) % p after the kth collision.  (But make sure that
     /// F(e) is never 0.)
   public:
     /// constructor
-    hashed_simple_set(const int n): H(n), P(13) {    
+    hashed_simple_set(const int n): H(n), P(13), ptr(new T[P]) {    
        
-        ptr = new T[P];
+        //ptr = new T[P];
     }
 
     /// destructor
@@ -210,11 +210,12 @@ class hashed_simple_set : public virtual simple_set<T> {
 
     virtual hashed_simple_set<T, F>& operator+=(const T item) {
         int hash; 
+        int item_mod = (F()(item)) % H;
 
-        if(F(item) % H == 0){
+        if( item_mod == 0){
           hash = 1; /* make sure F(e) is never 0 */
         }else{
-          hash = F(item) % H;
+          hash = item_mod;
         }
 
         if((*(ptr+hash) != item) && (*(ptr+hash) != (T)0)){
@@ -236,21 +237,24 @@ class hashed_simple_set : public virtual simple_set<T> {
     }
     virtual hashed_simple_set<T, F>& operator-=(const T item) {
         
+        int item_mod = (F()(item)) % H;
         for(int i=1; i<= P; i++){
-          if(*(ptr+i*F(item)%H) == item){
-            *(ptr+i*F(item)%H) == (T)0;
+          if(*(ptr+i* item_mod) == item){
+            *(ptr+i*item_mod) == (T)0;
             return *this;
           }
         }
         return *this;
     }
     virtual bool contains(const T& item) const {
-       int hash = (F(item) % H);
-       if (hash == 0){
-        hash = 1;
+
+      int item_mod = (F()(item)) % H;
+
+       if (item_mod == 0){
+        item_mod = 1;
        }
        for (int i=1; i<=P; i++){
-        if(*(ptr+i*hash) == item) return true;
+        if(*(ptr+i*item_mod) == item) return true;
        }
 
        return false;
