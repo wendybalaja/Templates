@@ -137,8 +137,8 @@ class carray_simple_set : public virtual simple_set<T> {
     /// constructor
     carray_simple_set(const T l, const T h): L(l), H(h) {   
        
-      if(l>h) throw out_bounds_err; /*handle exception*/
-      ptr = new bool[H-L];
+      if(l>h) throw out_bounds_err; /*handle exception if left bound is bigger than right bound*/
+      ptr = new bool[H-L];/* create an array of booleans */
         // (void) l;  (void) h;
     }
 
@@ -189,11 +189,9 @@ class overflow { };
 template<typename T, typename F = cast_to_int<T>>
 class hashed_simple_set : public virtual simple_set<T> {
     /// 'virtual' on simple_set ensures single copy if multiply inherited
-    ///
-    /// You'll need some data members here.
-    ///
-   int H; 
-   int P; 
+  
+   int H; /*hash prime number*/
+   int P; /*hash table size*/
    T * ptr; 
    static const overflow overflow_err;
     /// I recommend you pick a hash table size p that is a prime
@@ -202,8 +200,8 @@ class hashed_simple_set : public virtual simple_set<T> {
     /// F(e) is never 0.)
   public:
     /// constructor
-    hashed_simple_set(const int n): H(n), P(prime_greater_than(n)) {    
-        // replace this line:
+    hashed_simple_set(const int n): H(n), P(13) {    
+       
         ptr = new T[P];
     }
 
@@ -211,17 +209,54 @@ class hashed_simple_set : public virtual simple_set<T> {
     virtual ~hashed_simple_set() { }    
 
     virtual hashed_simple_set<T, F>& operator+=(const T item) {
-        // replace this line:
-        (void) item;  return *this;
+        int hash; 
+
+        if(F(item) % H == 0){
+          hash = 1; /* make sure F(e) is never 0 */
+        }else{
+          hash = F(item) % H;
+        }
+
+        if((*(ptr+hash) != item) && (*(ptr+hash) != (T)0)){
+          int k = 1;
+          while((*(ptr+k*hash) != item) && (*(ptr+k*hash) != (T)0) && k<=H){
+            k++;
+          }
+          if(k>H){
+            throw overflow_err;
+          }else{
+            *(ptr+k*hash) = item; 
+          }
+
+        }else{
+          *(ptr+hash) = item;
+        }
+
+        return *this;
     }
     virtual hashed_simple_set<T, F>& operator-=(const T item) {
-        // replace this line:
-        (void) item;  return *this;
+        
+        for(int i=1; i<= P; i++){
+          if(*(ptr+i*F(item)%H) == item){
+            *(ptr+i*F(item)%H) == (T)0;
+            return *this;
+          }
+        }
+        return *this;
     }
     virtual bool contains(const T& item) const {
-        // replace this line:
-        (void) item;  return false;
+       int hash = (F(item) % H);
+       if (hash == 0){
+        hash = 1;
+       }
+       for (int i=1; i<=P; i++){
+        if(*(ptr+i*hash) == item) return true;
+       }
+
+       return false;
     }
+
+
 };
 
 //---------------------------------------------------------------
@@ -382,12 +417,12 @@ class carray_range_set : public virtual range_set<T, C> {
     /**
      * @throws out_of_bounds 
      */
-    virtual carray_range_set<T, C, I>& operator+=(const range<T, C> r) throw(out_of_bounds) = 0;
+   // virtual carray_range_set<T, C, I>& operator+=(const range<T, C> r) throw(out_of_bounds) = 0;
 
     /**
      * @throws out_of_bounds 
      */
-    virtual carray_range_set<T, C, I>& operator-=(const range<T, C> r) throw(out_of_bounds) = 0;
+   // virtual carray_range_set<T, C, I>& operator-=(const range<T, C> r) throw(out_of_bounds) = 0;
 };
 
 //---------------------------------------------------------------
@@ -402,7 +437,7 @@ class hashed_range_set : public virtual range_set<T, C> {
     /**
      * @throws overflow
      */
-    virtual hashed_range_set<T, F, C, I>& operator+=(const range<T, C> r) throw(overflow) = 0;
+   // virtual hashed_range_set<T, F, C, I>& operator+=(const range<T, C> r) throw(overflow) = 0;
 };
 //---------------------------------------------------------------
 
@@ -414,7 +449,7 @@ class bin_range_set : public virtual range_set<T, C> {
     /**
      * @throws overflow
      */
-    virtual bin_range_set<T, C>& operator+=(const range<T, C> r) throw(overflow) = 0;
+   // virtual bin_range_set<T, C>& operator+=(const range<T, C> r) throw(overflow) = 0;
 };
 
 //===============================================================
