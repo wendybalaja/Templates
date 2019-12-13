@@ -155,7 +155,8 @@ class carray_simple_set : public virtual simple_set<T> {
     virtual carray_simple_set<T>& operator-=(const T item) {
         // replace this line:
       if( item >= H || item < L) throw out_bounds_err;
-      *(ptr+((int)item - (int)L)) == false;
+      *(ptr+((int)item - (int)L)) = false;
+      // ptr[(int)item - (int)L] = false;
       return *this;
     }
     virtual bool contains(const T& item) const {
@@ -207,7 +208,9 @@ class hashed_simple_set : public virtual simple_set<T> {
     }
 
     /// destructor
-    virtual ~hashed_simple_set() { }    
+    virtual ~hashed_simple_set() { 
+        delete ptr;
+    }    
 
     virtual hashed_simple_set<T, F>& operator+=(const T item) {
         int hash; 
@@ -294,10 +297,172 @@ class hashed_simple_set : public virtual simple_set<T> {
 template<typename T, typename C = comp<T>>
 class bin_search_simple_set : public virtual simple_set<T> {
     /// You'll need some data members here.
-  C cmp;
-  T H;
-  public:
-    /// and some methods
+     const int MAX;
+     int size;
+     T *ptr; 
+     static const out_of_bounds out_bounds_err;
+     static const overflow overflow_err;
+     C cmp;
+
+
+    public:
+      /// fill in these methods:
+
+      /// constructor
+      bin_search_simple_set(const int max): MAX(max) {   
+         
+        ptr = new T[max];/* create an array of T's */
+        size = 0; // new set has size 0
+
+      }
+
+      /// destructor
+      virtual ~bin_search_simple_set() {
+          delete ptr;
+      }
+
+      virtual bin_search_simple_set<T, C>& operator+=(const T item) {
+        //variable size holds the current size of the array, if it is equal to max at the start
+        //of an insert, then we throw overflow.
+        if(size == MAX){
+            throw overflow_err;
+        }
+
+        //we look for a location to insert the element
+        int index;
+        if(size == 0){
+            index = 0;
+        }
+        else {
+            index = binary_search(ptr, item, 0, size-1);
+
+        }
+
+        printf("index is : %d to insert %d current size is : %d\n",index, (int)item,size);
+
+        //if the index is -1, that means the element already exists in the set
+        if(index == -1){
+            return *this;
+        }
+        //now that we have an index, we insert element and push everything over one spot
+
+        //if our index turns out to be the last index, we don't need to push anything over so we just place it there
+        if(index == size){
+            ptr[index] = item;
+        }else{
+
+            int i = size-1;
+            while (i >= index) 
+            { 
+                ptr[i+1] = ptr[i]; 
+                i--; 
+            } 
+            ptr[i+1] = item; 
+
+        }
+        size++;
+        return *this;
+
+
+
+      }
+
+       virtual bin_search_simple_set<T, C>& operator-=(const T item) {
+
+
+        //we look for a location to remove the element
+        int index;
+
+        index = binary_search_remove(ptr, item, 0, size-1);
+
+
+        printf("index is : %d to remove %d current size is : %d\n",index, (int)item,size);
+
+        //if the index is -1, that means the element does not exists in the set
+        if(index == -1){
+            return *this;
+        }
+        //now that we have an index, we remove element and push everything over one spot
+
+        while (index<= size-1) 
+        { 
+            ptr[index] = ptr[index+1]; 
+            index++; 
+        } 
+        size--;
+        return *this;
+
+
+
+      }
+
+      virtual bool contains(const T& item) const {
+        int index = binary_search_remove(this->ptr, item, 0, size-1);
+        return (0 != -1);
+      }
+
+      //returns -1 if the element already exists in the array
+      int binary_search(T ptr[], T item, int low, int high){
+        printf("high is %d low is %d middle is %d item is %d\n", high,low,((high+low)/2),(int) item);
+
+        if(high <= low){
+            if(cmp.precedes(item,ptr[low])){
+                return low;
+            }else{
+                return low+1;
+            }
+        }
+        int mid = (high+low)/2;
+        T middle = ptr[mid];
+        //returns -1 if the element already exists in the array
+        if(cmp.equals(item, middle)){
+            return -1;
+        }
+        if(cmp.precedes(item, middle)){
+            return binary_search(ptr, item, low, mid-1);
+        }else{
+            return binary_search(ptr, item, mid+1, high);
+        }
+
+
+      }
+
+     int binary_search_remove(T ptr[], T item, int low, int high){
+        printf("to remove high is %d low is %d middle is %d item is %d\n", high,low,((high+low)/2),(int) item);
+
+        // if(high <= low){
+        //     return -1; //element not found
+        // }
+        int mid = (high+low)/2;
+        T middle = ptr[mid];
+        //returns -1 if the element already exists in the array
+        if(cmp.equals(item, middle)){
+            return mid;
+        }
+        if(high <= low){
+            return -1; //element not found
+        }
+
+        if(cmp.precedes(item, middle)){
+            return binary_search_remove(ptr, item, low, mid-1);
+        }else{
+            return binary_search_remove(ptr, item, mid+1, high);
+        }
+
+
+      }
+
+      void showSet(){
+        for(int i = 0; i < size; i++){
+            printf("%d\n",(int)ptr[i]);
+        }
+      }
+
+
+
+
+
+
 };
 
 //===============================================================
@@ -440,15 +605,14 @@ class std_range_set : public virtual range_set<T, C>,
         return std_simple_set<T>::contains(item);
     }
     virtual range_set<T>& operator+=(const range<T, C> r) {
-        for (T i = (r.closed_low() ? r.low() : inc(r.low()));
-                r.contains(i); i = inc(i)) {
+        for (T i = (r.closed_low() ? r.low() : inc(r.low())); r.contains(i); i = inc(i)) {
+
             *this += i;
         }
         return *this;
     }
     virtual range_set<T>& operator-=(const range<T, C> r) {
-        for (T i = (r.closed_low() ? r.low() : inc(r.low()));
-                r.contains(i); i = inc(i)) {
+        for (T i = (r.closed_low() ? r.low() : inc(r.low())); r.contains(i); i = inc(i)) {
             *this -= i;
         }
         return *this;
@@ -464,7 +628,7 @@ class carray_range_set : public virtual range_set<T, C>, public carray_simple_se
     static_assert(std::is_integral<T>::value, "Integral type required.");
     C cmp;
     I inc;
-    C cmp;
+
     static const out_of_bounds out_bounds_err;
 
   public:
@@ -494,18 +658,19 @@ class carray_range_set : public virtual range_set<T, C>, public carray_simple_se
     }
 
     virtual range_set<T>& operator-=(const range<T, C> r) {
-        for (T i = (r.closed_low() ? r.low() : inc(r.low()));
-                r.contains(i); i = inc(i)) {
+
+        for (T i = (r.closed_low() ? r.low() : inc(r.low())); r.contains(i); i = inc(i)) {
+
             *this -= i;
+
         }
         return *this;
     }
     /**
      * @throws out_of_bounds 
      */
-   virtual carray_range_set<T, C, I>& operator+=(const range<T, C> r){
-        
-   };
+   // virtual carray_range_set<T, C, I>& operator+=(const range<T, C> r) throw(out_of_bounds) = 0;
+
 
     /**
      * @throws out_of_bounds 
