@@ -69,44 +69,53 @@ int main() {
     // H1+= 3.14; H1+= 1.9;
     // cout << "pi is " << (H1.contains(3.14) ? "" : "not ") << "in H1\n";
 
-    bin_search_simple_set<double> J(100);
-            J.showSet();
+    // bin_search_simple_set<double> J(100);
+    //         J.showSet();
 
-    J += 1;
-        J.showSet();
-    printf("--------------\n");
-    J -= 1;
-            J.showSet();
-    printf("--------------\n");
+    // J += 1;
+    //     J.showSet();
+    // printf("--------------\n");
+    // J -= 1;
+    //         J.showSet();
+    // printf("--------------\n");
 
-    J += 2;
-        J.showSet();
-            printf("--------------\n");
-
-
-    J += 3;
-        J.showSet();
-            printf("--------------\n");
-
-    J += 5;
-        J.showSet();
-            printf("--------------\n");
+    // J += 2;
+    //     J.showSet();
+    //         printf("--------------\n");
 
 
-    J += 4;
-        J.showSet();
-            printf("--------------\n");
+    // J += 3;
+    //     J.showSet();
+    //         printf("--------------\n");
 
-    J -= 1;
-            J.showSet();
-                printf("--------------\n");
+    // J += 5;
+    //     J.showSet();
+    //         printf("--------------\n");
 
-    J -= 3;
-            J.showSet();
-                printf("--------------\n");
 
-    cout << "4 is " << (J.contains(4) ? "" : "not ") << "in J\n";
+    // J += 4;
+    //     J.showSet();
+    //         printf("--------------\n");
 
+    // J -= 1;
+    //         J.showSet();
+    //             printf("--------------\n");
+
+    // J -= 3;
+    //         J.showSet();
+    //             printf("--------------\n");
+
+    // cout << "4 is " << (J.contains(4) ? "" : "not ") << "in J\n";
+
+
+   // bin_range_set<int> J(100);
+  // s += range<double>(2.0, true, 4.0, true);
+  // s += range<double>(6.0, true, 8.0, true);
+  // s += range<double>(10.0, true, 11.0, true);
+  // assert(!s.contains(5.0));
+  // assert(s.contains(3.7));
+  // s += range<double>(1.0, false, 10.7, false);
+  // assert(s.contains(5.0));
 
 
 

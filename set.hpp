@@ -520,7 +520,7 @@ class range {
             && (cmp.precedes(item, H) || (Hinc && cmp.equals(item, H))));
     }
     bool precedes(const range<T, C>& other) const {
-        if((precedes(H, other.L))||((cmp.equals(H,other.L))&&(!Hinc)&&(!other.Linc))){
+        if((cmp.precedes(H, other.L))||((cmp.equals(H,other.L))&&(!Hinc)&&(!other.Linc))){
            return true; 
         }
         return false;
@@ -548,6 +548,17 @@ class range {
             return false;
         }
     }
+
+    // range* split(const range<T, C>& other) const{
+    //     //a result array that will cary the split range
+    //     range<T, C> *result = new range<T, C>[2];
+
+    //     //three situatuions 
+
+    //     //range from the middle of an existing range 
+
+
+    // }
 
     range merge(const range<T, C>& other) const {
 
@@ -755,43 +766,6 @@ class bin_range_set : public virtual range_set<T, C> {
      * @throws overflow
      */
    // virtual bin_range_set<T, C>& operator+=(const range<T, C> r) throw(overflow) = 0;
-
-          /// constructor
-      bin_range_set(const int max): MAX(max) {   
-         
-        ptr = new range<T,C>[max];/* create an array of T's */
-        size = 0; // new set has size 0
-
-      }
-      //to make sure that the compiler knows exactly what operator to call
-      //similar to carray
-      virtual bin_search_simple_set<T,C>& operator+=(const T item){
-          return bin_search_simple_set<T,C>::operator+=(item);
-      }
-      virtual bin_search_simple_set<T,C>& operator-=(const T item){
-          return bin_search_simple_set<T,C>::operator-=(item);
-      }
-      virtual bin_range_set<T,C>& operator+=(const range<T, C> item) {
-        //variable size holds the current size of the array, if it is equal to max at the start
-        //of an insert, then we throw overflow.
-        if(size == MAX){
-            throw overflow_err;
-        }
-        // int index;
-        // if(size == 0){
-        //     index = 0;
-        // }
-        // else {
-        //     index = binary_search(ptr, item, 0, size-1);
-
-        // }
-
-        //test for equality
-        //test for overlap, if so merge
-        //
-
-
-      }
 
 
 
