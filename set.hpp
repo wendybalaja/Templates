@@ -511,9 +511,11 @@ class range {
   public:
     range(const T l = (T) NULL, const bool linc = false, const T h = (T) NULL, const bool hinc = false)
             : L(l), Linc(linc), H(h), Hinc(hinc), cmp() {
+        if(l  && h ){
         if (cmp.precedes(h, l)
-            || (cmp.equals(l, h) && (!Linc || !Hinc))) throw empty_range;
+            || (cmp.equals(l, h) && (!Linc || !Hinc))) throw empty_range;}
     }
+    
     
     T low() const { return L; }
     bool closed_low() const { return Linc; }
@@ -774,7 +776,7 @@ public:
 
 /// Fill out
 template<typename T, typename C = comp<T>>
-class bin_range_set : public virtual range_set<T, C>,public virtual bin_search_simple_set<T,C> {
+class bin_range_set : public virtual range_set<T, C>,public bin_search_simple_set<T,C> {
     // 'virtual' on range_set ensures single copy if multiply inherited
      const int MAX;
      int size;
@@ -791,8 +793,8 @@ class bin_range_set : public virtual range_set<T, C>,public virtual bin_search_s
    // virtual bin_range_set<T, C>& operator+=(const range<T, C> r) throw(overflow) = 0;
 
 
-    bin_range_set(int max) : bin_search_simple_set<T, C>(max), MAX(max) {
-         ptr = new range<T,C>[max];/* create an array of T's */
+    bin_range_set(int max) : bin_search_simple_set<T, C>(max), MAX(max){
+        ptr = new range<T,C>[max];
     }
 
 
@@ -806,7 +808,45 @@ class bin_range_set : public virtual range_set<T, C>,public virtual bin_search_s
     virtual bin_search_simple_set<T,C>& operator-=(const T item){
         return bin_search_simple_set<T,C>::operator-=(item);
     }
-    virtual bin_range_set<T,C>& operator+=(const range<T, C> item){
+
+
+   virtual bin_range_set<T,C>& operator+=(const range<T, C> item) {
+        //variable size holds the current size of the array, if it is equal to max at the start
+        //of an insert, then we throw overflow.
+        if(size == MAX){
+            throw overflow_err;
+        }
+
+        //linear time insert
+
+        for(int i = 0; i < size ; i++){
+            range <T,C> current_range = ptr[i];
+            //if the item is the same as an element, nothing to do here we just return
+            if(item.equals(current_range)){
+                return *this;
+                ptr[i] = current_range;
+            }
+
+            if(item.precedes(current_range)){
+                range <T,C> given = item;
+                //we shift the ranges up by one and add the element
+                for(int a = i; a<size+1; a++){
+                    range <T,C> temp = ptr[a];
+                    ptr[a] = given;
+                    given = temp;
+
+                }
+                size++;
+                return *this;
+
+            }
+
+            if(item.overlaps(current_range)){
+                ptr[i] = ptr[i].merge(item);
+                return *this;
+
+            }
+        }
     }
     virtual bin_range_set<T,C>& operator-=(const range<T, C> item){
     }   

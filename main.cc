@@ -2,7 +2,7 @@
 
 int main() {
 
-      bin_range_set<double> J(100);
+      bin_range_set<int> J(1);
 
 
 
