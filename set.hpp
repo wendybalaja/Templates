@@ -509,7 +509,7 @@ class range {
     /// can't be static; needs explicit instantiation
     C cmp;      
   public:
-    range(const T l, const bool linc, const T h, const bool hinc)
+    range(const T l = (T) NULL, const bool linc = false, const T h = (T) NULL, const bool hinc = false)
             : L(l), Linc(linc), H(h), Hinc(hinc), cmp() {
         if (cmp.precedes(h, l)
             || (cmp.equals(l, h) && (!Linc || !Hinc))) throw empty_range;
@@ -774,7 +774,7 @@ public:
 
 /// Fill out
 template<typename T, typename C = comp<T>>
-class bin_range_set : public virtual range_set<T, C> {
+class bin_range_set : public virtual range_set<T, C>,public virtual bin_search_simple_set<T,C> {
     // 'virtual' on range_set ensures single copy if multiply inherited
      const int MAX;
      int size;
@@ -789,6 +789,28 @@ class bin_range_set : public virtual range_set<T, C> {
      * @throws overflow
      */
    // virtual bin_range_set<T, C>& operator+=(const range<T, C> r) throw(overflow) = 0;
+
+
+    bin_range_set(int max) : bin_search_simple_set<T, C>(max), MAX(max) {
+         ptr = new range<T,C>[max];/* create an array of T's */
+    }
+
+
+
+    virtual bool contains(const T& item) const {
+          return bin_search_simple_set<T,C>::contains(item);
+    }
+    virtual bin_search_simple_set<T,C>& operator+=(const T item){
+        return bin_search_simple_set<T,C>::operator+=(item);
+    }
+    virtual bin_search_simple_set<T,C>& operator-=(const T item){
+        return bin_search_simple_set<T,C>::operator-=(item);
+    }
+    virtual bin_range_set<T,C>& operator+=(const range<T, C> item){
+    }
+    virtual bin_range_set<T,C>& operator-=(const range<T, C> item){
+    }   
+ 
 
 
 
