@@ -1,0 +1,129 @@
+\hypertarget{classhashed__simple__set}{}\doxysection{hashed\+\_\+simple\+\_\+set$<$ T, F $>$ Class Template Reference}
+\label{classhashed__simple__set}\index{hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}}
+
+
+{\ttfamily \#include $<$set.\+hpp$>$}
+
+Inheritance diagram for hashed\+\_\+simple\+\_\+set$<$ T, F $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classhashed__simple__set}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhashed__simple__set_a1df6ee60c443442cb56411ab805114bc}{hashed\+\_\+simple\+\_\+set}} (const int n)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classhashed__simple__set_a3bb1db9e3cc43b3113cb025ea38ab643}\label{classhashed__simple__set_a3bb1db9e3cc43b3113cb025ea38ab643}} 
+virtual \mbox{\hyperlink{classhashed__simple__set_a3bb1db9e3cc43b3113cb025ea38ab643}{$\sim$hashed\+\_\+simple\+\_\+set}} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}}$<$ T, F $>$ \& \mbox{\hyperlink{classhashed__simple__set_a37c8f87431b81be8950216e0f83b736c}{operator+=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Inserts item into set. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}}$<$ T, F $>$ \& \mbox{\hyperlink{classhashed__simple__set_a93f6563b0d48474196fb7d231ec6318f}{operator-\/=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Removes item from set, if it was there (otherwise does nothing) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classhashed__simple__set_ae9893b98342eec3974e29301ee05065c}{contains}} (const T \&item) const
+\begin{DoxyCompactList}\small\item\em Indicates whether item is in set. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classhashed__simple__set_a0e1279b1607fb69eba70f6613bc5f76b}\label{classhashed__simple__set_a0e1279b1607fb69eba70f6613bc5f76b}} 
+int {\bfseries bigger\+\_\+prime} (int n)
+\item 
+\mbox{\Hypertarget{classhashed__simple__set_a6af652a3f1adef6ea8cbfca31aab0286}\label{classhashed__simple__set_a6af652a3f1adef6ea8cbfca31aab0286}} 
+bool {\bfseries prime} (int n)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename F = cast\+\_\+to\+\_\+int$<$\+T$>$$>$\newline
+class hashed\+\_\+simple\+\_\+set$<$ T, F $>$}
+
+Hash table implementation of set. Requires instantiation with guaranteed upper bound on number of elements that may be placed in set. Throws overflow if bound is exceeded. Can be instantiated without second generic parameter if element type can be cast to int; otherwise requires hash function object. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classhashed__simple__set_a1df6ee60c443442cb56411ab805114bc}\label{classhashed__simple__set_a1df6ee60c443442cb56411ab805114bc}} 
+\index{hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}!hashed\_simple\_set@{hashed\_simple\_set}}
+\index{hashed\_simple\_set@{hashed\_simple\_set}!hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}}
+\doxysubsubsection{\texorpdfstring{hashed\_simple\_set()}{hashed\_simple\_set()}}
+{\footnotesize\ttfamily template$<$typename T , typename F  = cast\+\_\+to\+\_\+int$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}}$<$ T, F $>$\+::\mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}} (\begin{DoxyParamCaption}\item[{const int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+constructor 
+
+I recommend you pick a hash table size p that is a prime number $>$= n, use F(e) \% p as your hash function, and rehash with k\+F(e) \% p after the kth collision. (But make sure that F(e) is never 0.) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classhashed__simple__set_ae9893b98342eec3974e29301ee05065c}\label{classhashed__simple__set_ae9893b98342eec3974e29301ee05065c}} 
+\index{hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}!contains@{contains}}
+\index{contains@{contains}!hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T , typename F  = cast\+\_\+to\+\_\+int$<$\+T$>$$>$ \\
+virtual bool \mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}}$<$ T, F $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Indicates whether item is in set. 
+
+Indicates whether item is in set. 
+
+Implements \mbox{\hyperlink{classsimple__set_a01f61dccabbf71ea75488756ae4af2a8}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classhashed__range__set_aba4a76478c51c81fd7289eb286d9a9d1}{hashed\+\_\+range\+\_\+set$<$ T, F, C, I $>$}}.
+
+\mbox{\Hypertarget{classhashed__simple__set_a37c8f87431b81be8950216e0f83b736c}\label{classhashed__simple__set_a37c8f87431b81be8950216e0f83b736c}} 
+\index{hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T , typename F  = cast\+\_\+to\+\_\+int$<$\+T$>$$>$ \\
+virtual \mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}}$<$T, F$>$\& \mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}}$<$ T, F $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Inserts item into set. 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S += a += b += c;}
+\end{DoxyCode}
+ 
+
+Implements \mbox{\hyperlink{classsimple__set_ac6cdede4b06afa6df196129606b46398}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classhashed__range__set_ab03ce646bdc446a1fe30cf828877d4a3}{hashed\+\_\+range\+\_\+set$<$ T, F, C, I $>$}}.
+
+\mbox{\Hypertarget{classhashed__simple__set_a93f6563b0d48474196fb7d231ec6318f}\label{classhashed__simple__set_a93f6563b0d48474196fb7d231ec6318f}} 
+\index{hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!hashed\_simple\_set$<$ T, F $>$@{hashed\_simple\_set$<$ T, F $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T , typename F  = cast\+\_\+to\+\_\+int$<$\+T$>$$>$ \\
+virtual \mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}}$<$T, F$>$\& \mbox{\hyperlink{classhashed__simple__set}{hashed\+\_\+simple\+\_\+set}}$<$ T, F $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Removes item from set, if it was there (otherwise does nothing) 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S -\/= a -\/= b -\/= c;}
+\end{DoxyCode}
+ 
+
+Implements \mbox{\hyperlink{classsimple__set_aa426326cf50be901bdb251d487d84c48}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classhashed__range__set_af4faacc545c99927c0528ec21250d7cf}{hashed\+\_\+range\+\_\+set$<$ T, F, C, I $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/shrei/\+Personal/\+C\+S\+C 254/\+Templates/set.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,109 @@
+\hypertarget{classstd__simple__set}{}\doxysection{std\+\_\+simple\+\_\+set$<$ T $>$ Class Template Reference}
+\label{classstd__simple__set}\index{std\_simple\_set$<$ T $>$@{std\_simple\_set$<$ T $>$}}
+
+
+{\ttfamily \#include $<$set.\+hpp$>$}
+
+Inheritance diagram for std\+\_\+simple\+\_\+set$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classstd__simple__set}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classstd__simple__set_a94bd626f4308470ed8bfb978ace12d2b}\label{classstd__simple__set_a94bd626f4308470ed8bfb978ace12d2b}} 
+virtual \mbox{\hyperlink{classstd__simple__set_a94bd626f4308470ed8bfb978ace12d2b}{$\sim$std\+\_\+simple\+\_\+set}} ()
+\begin{DoxyCompactList}\small\item\em will invoke std\+::$\sim$set$<$\+T$>$() \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classstd__simple__set}{std\+\_\+simple\+\_\+set}}$<$ T $>$ \& \mbox{\hyperlink{classstd__simple__set_aab380c4ca207b4a9d426d9cf9559d728}{operator+=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Inserts item into set. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classstd__simple__set}{std\+\_\+simple\+\_\+set}}$<$ T $>$ \& \mbox{\hyperlink{classstd__simple__set_abe2b31e2095d9966e649a7c8a6e78651}{operator-\/=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Removes item from set, if it was there (otherwise does nothing) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classstd__simple__set_a81fa19ec0ddeab3394475188b32cfec8}{contains}} (const T \&item) const
+\begin{DoxyCompactList}\small\item\em Indicates whether item is in set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class std\+\_\+simple\+\_\+set$<$ T $>$}
+
+Example of a set that implements the \mbox{\hyperlink{classsimple__set}{simple\+\_\+set}} interface. Borrows the balanced tree implementation of the standard template library. Note that you are N\+OT to use any standard library collections in your code (though you may use strings and streams).
+
+\textquotesingle{}virtual\textquotesingle{} on \mbox{\hyperlink{classsimple__set}{simple\+\_\+set}} ensures single copy if multiply inherited 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classstd__simple__set_a81fa19ec0ddeab3394475188b32cfec8}\label{classstd__simple__set_a81fa19ec0ddeab3394475188b32cfec8}} 
+\index{std\_simple\_set$<$ T $>$@{std\_simple\_set$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!std\_simple\_set$<$ T $>$@{std\_simple\_set$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual bool \mbox{\hyperlink{classstd__simple__set}{std\+\_\+simple\+\_\+set}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Indicates whether item is in set. 
+
+Indicates whether item is in set. 
+
+Implements \mbox{\hyperlink{classsimple__set_a01f61dccabbf71ea75488756ae4af2a8}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classstd__range__set_a5aa21958a00b7b3d778bcf0bb1828b03}{std\+\_\+range\+\_\+set$<$ T, C, I $>$}}.
+
+\mbox{\Hypertarget{classstd__simple__set_aab380c4ca207b4a9d426d9cf9559d728}\label{classstd__simple__set_aab380c4ca207b4a9d426d9cf9559d728}} 
+\index{std\_simple\_set$<$ T $>$@{std\_simple\_set$<$ T $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!std\_simple\_set$<$ T $>$@{std\_simple\_set$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual \mbox{\hyperlink{classstd__simple__set}{std\+\_\+simple\+\_\+set}}$<$T$>$\& \mbox{\hyperlink{classstd__simple__set}{std\+\_\+simple\+\_\+set}}$<$ T $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Inserts item into set. 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S += a += b += c;}
+\end{DoxyCode}
+ 
+
+Implements \mbox{\hyperlink{classsimple__set_ac6cdede4b06afa6df196129606b46398}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classstd__range__set_a5ccd8bd23284238b3b2c566ea5bea923}{std\+\_\+range\+\_\+set$<$ T, C, I $>$}}.
+
+\mbox{\Hypertarget{classstd__simple__set_abe2b31e2095d9966e649a7c8a6e78651}\label{classstd__simple__set_abe2b31e2095d9966e649a7c8a6e78651}} 
+\index{std\_simple\_set$<$ T $>$@{std\_simple\_set$<$ T $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!std\_simple\_set$<$ T $>$@{std\_simple\_set$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual \mbox{\hyperlink{classstd__simple__set}{std\+\_\+simple\+\_\+set}}$<$T$>$\& \mbox{\hyperlink{classstd__simple__set}{std\+\_\+simple\+\_\+set}}$<$ T $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Removes item from set, if it was there (otherwise does nothing) 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S -\/= a -\/= b -\/= c;}
+\end{DoxyCode}
+ 
+
+Implements \mbox{\hyperlink{classsimple__set_aa426326cf50be901bdb251d487d84c48}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classstd__range__set_a7cda0b9be0cce5bbcd4e88c35a34989b}{std\+\_\+range\+\_\+set$<$ T, C, I $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/shrei/\+Personal/\+C\+S\+C 254/\+Templates/set.\+hpp\end{DoxyCompactItemize}

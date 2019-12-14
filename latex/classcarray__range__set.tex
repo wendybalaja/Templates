@@ -1,0 +1,106 @@
+\hypertarget{classcarray__range__set}{}\doxysection{carray\+\_\+range\+\_\+set$<$ T, C, I $>$ Class Template Reference}
+\label{classcarray__range__set}\index{carray\_range\_set$<$ T, C, I $>$@{carray\_range\_set$<$ T, C, I $>$}}
+
+
+Fill out.  
+
+
+
+
+{\ttfamily \#include $<$set.\+hpp$>$}
+
+Inheritance diagram for carray\+\_\+range\+\_\+set$<$ T, C, I $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classcarray__range__set}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcarray__range__set_afbbdb4e73ede3d66ff523d426ca94d82}\label{classcarray__range__set_afbbdb4e73ede3d66ff523d426ca94d82}} 
+{\bfseries carray\+\_\+range\+\_\+set} (const T l, const T h)
+\item 
+virtual \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$ T $>$ \& \mbox{\hyperlink{classcarray__range__set_a43a1771a4fe60f2756bb33b4eb315719}{operator+=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Inserts item into set. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$ T $>$ \& \mbox{\hyperlink{classcarray__range__set_ac6d0f7614e0173a3f8d8e3e556e5f2c7}{operator-\/=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Removes item from set, if it was there (otherwise does nothing) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classcarray__range__set_ace410feab4b7442451828a52c04bcf1f}{contains}} (const T \&item) const
+\begin{DoxyCompactList}\small\item\em Indicates whether item is in set. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcarray__range__set_a76c4b53e1caad8904b82731821be2a0f}\label{classcarray__range__set_a76c4b53e1caad8904b82731821be2a0f}} 
+virtual \mbox{\hyperlink{classcarray__range__set}{carray\+\_\+range\+\_\+set}}$<$ T $>$ \& {\bfseries operator+=} (const \mbox{\hyperlink{classrange}{range}}$<$ T, C $>$ r)
+\item 
+\mbox{\Hypertarget{classcarray__range__set_aeb127112164db9e2680523a2d4809bf8}\label{classcarray__range__set_aeb127112164db9e2680523a2d4809bf8}} 
+virtual \mbox{\hyperlink{classcarray__range__set}{carray\+\_\+range\+\_\+set}}$<$ T $>$ \& {\bfseries operator-\/=} (const \mbox{\hyperlink{classrange}{range}}$<$ T, C $>$ r)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename C = comp$<$\+T$>$, typename I = increment$<$\+T$>$$>$\newline
+class carray\+\_\+range\+\_\+set$<$ T, C, I $>$}
+
+Fill out. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcarray__range__set_ace410feab4b7442451828a52c04bcf1f}\label{classcarray__range__set_ace410feab4b7442451828a52c04bcf1f}} 
+\index{carray\_range\_set$<$ T, C, I $>$@{carray\_range\_set$<$ T, C, I $>$}!contains@{contains}}
+\index{contains@{contains}!carray\_range\_set$<$ T, C, I $>$@{carray\_range\_set$<$ T, C, I $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$, typename I  = increment$<$\+T$>$$>$ \\
+virtual bool \mbox{\hyperlink{classcarray__range__set}{carray\+\_\+range\+\_\+set}}$<$ T, C, I $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Indicates whether item is in set. 
+
+Indicates whether item is in set. 
+
+Reimplemented from \mbox{\hyperlink{classcarray__simple__set_a084d826c875b8914f5d2628397a7cf15}{carray\+\_\+simple\+\_\+set$<$ T $>$}}.
+
+\mbox{\Hypertarget{classcarray__range__set_a43a1771a4fe60f2756bb33b4eb315719}\label{classcarray__range__set_a43a1771a4fe60f2756bb33b4eb315719}} 
+\index{carray\_range\_set$<$ T, C, I $>$@{carray\_range\_set$<$ T, C, I $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!carray\_range\_set$<$ T, C, I $>$@{carray\_range\_set$<$ T, C, I $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$, typename I  = increment$<$\+T$>$$>$ \\
+virtual \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$T$>$\& \mbox{\hyperlink{classcarray__range__set}{carray\+\_\+range\+\_\+set}}$<$ T, C, I $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Inserts item into set. 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S += a += b += c;}
+\end{DoxyCode}
+ 
+
+Reimplemented from \mbox{\hyperlink{classcarray__simple__set_aec4af208a09c5f2dadc2dbd01ccb2e13}{carray\+\_\+simple\+\_\+set$<$ T $>$}}.
+
+\mbox{\Hypertarget{classcarray__range__set_ac6d0f7614e0173a3f8d8e3e556e5f2c7}\label{classcarray__range__set_ac6d0f7614e0173a3f8d8e3e556e5f2c7}} 
+\index{carray\_range\_set$<$ T, C, I $>$@{carray\_range\_set$<$ T, C, I $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!carray\_range\_set$<$ T, C, I $>$@{carray\_range\_set$<$ T, C, I $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$, typename I  = increment$<$\+T$>$$>$ \\
+virtual \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$T$>$\& \mbox{\hyperlink{classcarray__range__set}{carray\+\_\+range\+\_\+set}}$<$ T, C, I $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Removes item from set, if it was there (otherwise does nothing) 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S -\/= a -\/= b -\/= c;}
+\end{DoxyCode}
+ 
+
+Reimplemented from \mbox{\hyperlink{classcarray__simple__set_a86aa7f8cbc9368b1cedee239aee075e3}{carray\+\_\+simple\+\_\+set$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/shrei/\+Personal/\+C\+S\+C 254/\+Templates/set.\+hpp\end{DoxyCompactItemize}

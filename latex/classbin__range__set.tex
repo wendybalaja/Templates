@@ -1,0 +1,123 @@
+\hypertarget{classbin__range__set}{}\doxysection{bin\+\_\+range\+\_\+set$<$ T, C $>$ Class Template Reference}
+\label{classbin__range__set}\index{bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}}
+
+
+Fill out.  
+
+
+
+
+{\ttfamily \#include $<$set.\+hpp$>$}
+
+Inheritance diagram for bin\+\_\+range\+\_\+set$<$ T, C $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classbin__range__set}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbin__range__set_a8cb7fe51826dd54f5f7516f5e78b889e}{bin\+\_\+range\+\_\+set}} (int max)
+\item 
+virtual bool \mbox{\hyperlink{classbin__range__set_aeb10a96b7b8ed10bac23c8aba0fce21e}{contains}} (const T \&item) const
+\begin{DoxyCompactList}\small\item\em Indicates whether item is in set. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$ T, C $>$ \& \mbox{\hyperlink{classbin__range__set_a86b4825ed6b5e221263fb412fd2d96df}{operator+=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Inserts item into set. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$ T, C $>$ \& \mbox{\hyperlink{classbin__range__set_a195bc7482f56bd79a2b6404d75d2ff31}{operator-\/=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Removes item from set, if it was there (otherwise does nothing) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbin__range__set_a2eed5e1709edcebc22c4f6e2e6abd8ef}\label{classbin__range__set_a2eed5e1709edcebc22c4f6e2e6abd8ef}} 
+virtual \mbox{\hyperlink{classbin__range__set}{bin\+\_\+range\+\_\+set}}$<$ T, C $>$ \& {\bfseries operator+=} (const \mbox{\hyperlink{classrange}{range}}$<$ T, C $>$ item)
+\item 
+\mbox{\Hypertarget{classbin__range__set_aca8cf534c4aec15dadfca6fb5a5859a0}\label{classbin__range__set_aca8cf534c4aec15dadfca6fb5a5859a0}} 
+virtual \mbox{\hyperlink{classbin__range__set}{bin\+\_\+range\+\_\+set}}$<$ T, C $>$ \& {\bfseries operator-\/=} (const \mbox{\hyperlink{classrange}{range}}$<$ T, C $>$ item)
+\item 
+\mbox{\Hypertarget{classbin__range__set_a61847e3663e9dc7a2cacc51011ece09d}\label{classbin__range__set_a61847e3663e9dc7a2cacc51011ece09d}} 
+void {\bfseries show\+Set} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename C = comp$<$\+T$>$$>$\newline
+class bin\+\_\+range\+\_\+set$<$ T, C $>$}
+
+Fill out. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbin__range__set_a8cb7fe51826dd54f5f7516f5e78b889e}\label{classbin__range__set_a8cb7fe51826dd54f5f7516f5e78b889e}} 
+\index{bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}!bin\_range\_set@{bin\_range\_set}}
+\index{bin\_range\_set@{bin\_range\_set}!bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{bin\_range\_set()}{bin\_range\_set()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classbin__range__set}{bin\+\_\+range\+\_\+set}}$<$ T, C $>$\+::\mbox{\hyperlink{classbin__range__set}{bin\+\_\+range\+\_\+set}} (\begin{DoxyParamCaption}\item[{int}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em overflow} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbin__range__set_aeb10a96b7b8ed10bac23c8aba0fce21e}\label{classbin__range__set_aeb10a96b7b8ed10bac23c8aba0fce21e}} 
+\index{bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}!contains@{contains}}
+\index{contains@{contains}!bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$$>$ \\
+virtual bool \mbox{\hyperlink{classbin__range__set}{bin\+\_\+range\+\_\+set}}$<$ T, C $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Indicates whether item is in set. 
+
+Indicates whether item is in set. 
+
+Reimplemented from \mbox{\hyperlink{classbin__search__simple__set_aef12b5e1fdba268c0f01d8e938af1b1f}{bin\+\_\+search\+\_\+simple\+\_\+set$<$ T, C $>$}}.
+
+\mbox{\Hypertarget{classbin__range__set_a86b4825ed6b5e221263fb412fd2d96df}\label{classbin__range__set_a86b4825ed6b5e221263fb412fd2d96df}} 
+\index{bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$$>$ \\
+virtual \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$T,C$>$\& \mbox{\hyperlink{classbin__range__set}{bin\+\_\+range\+\_\+set}}$<$ T, C $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Inserts item into set. 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S += a += b += c;}
+\end{DoxyCode}
+ 
+
+Reimplemented from \mbox{\hyperlink{classbin__search__simple__set_ae59d6260dd072bb5249d16c2a8ac6c4a}{bin\+\_\+search\+\_\+simple\+\_\+set$<$ T, C $>$}}.
+
+\mbox{\Hypertarget{classbin__range__set_a195bc7482f56bd79a2b6404d75d2ff31}\label{classbin__range__set_a195bc7482f56bd79a2b6404d75d2ff31}} 
+\index{bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!bin\_range\_set$<$ T, C $>$@{bin\_range\_set$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$$>$ \\
+virtual \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$T,C$>$\& \mbox{\hyperlink{classbin__range__set}{bin\+\_\+range\+\_\+set}}$<$ T, C $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Removes item from set, if it was there (otherwise does nothing) 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S -\/= a -\/= b -\/= c;}
+\end{DoxyCode}
+ 
+
+Reimplemented from \mbox{\hyperlink{classbin__search__simple__set_a950773084de16b2c1d085233d85defbf}{bin\+\_\+search\+\_\+simple\+\_\+set$<$ T, C $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/shrei/\+Personal/\+C\+S\+C 254/\+Templates/set.\+hpp\end{DoxyCompactItemize}

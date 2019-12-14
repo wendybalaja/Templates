@@ -1,0 +1,60 @@
+\hypertarget{classrange}{}\doxysection{range$<$ T, C $>$ Class Template Reference}
+\label{classrange}\index{range$<$ T, C $>$@{range$<$ T, C $>$}}
+
+
+{\ttfamily \#include $<$set.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrange_a9391e5b5fcb603164e1da0e91387cf0a}\label{classrange_a9391e5b5fcb603164e1da0e91387cf0a}} 
+{\bfseries range} (const T l=(T) N\+U\+LL, const bool linc=false, const T h=(T) N\+U\+LL, const bool hinc=false)
+\item 
+\mbox{\Hypertarget{classrange_aafb7635ce764bfe425a67b1102be7394}\label{classrange_aafb7635ce764bfe425a67b1102be7394}} 
+T {\bfseries low} () const
+\item 
+\mbox{\Hypertarget{classrange_aa620b0397c5d8b94306b6d3f5964d2e6}\label{classrange_aa620b0397c5d8b94306b6d3f5964d2e6}} 
+bool {\bfseries closed\+\_\+low} () const
+\item 
+\mbox{\Hypertarget{classrange_a96639a263a97a1bd78eea9422370e5a6}\label{classrange_a96639a263a97a1bd78eea9422370e5a6}} 
+T {\bfseries high} () const
+\item 
+\mbox{\Hypertarget{classrange_a1955192fd15faa36eba389918430c66f}\label{classrange_a1955192fd15faa36eba389918430c66f}} 
+bool {\bfseries closed\+\_\+high} () const
+\item 
+\mbox{\Hypertarget{classrange_a12f035e42e23f0183700d08d2583e819}\label{classrange_a12f035e42e23f0183700d08d2583e819}} 
+bool {\bfseries contains} (const T \&item) const
+\item 
+\mbox{\Hypertarget{classrange_a4ea8a980f585d47c21bb7f13f839cdc1}\label{classrange_a4ea8a980f585d47c21bb7f13f839cdc1}} 
+bool {\bfseries precedes} (const \mbox{\hyperlink{classrange}{range}}$<$ T, C $>$ \&other) const
+\item 
+\mbox{\Hypertarget{classrange_a52aefb14e97ffdf319721dc1b60c1b48}\label{classrange_a52aefb14e97ffdf319721dc1b60c1b48}} 
+bool {\bfseries overlaps} (const \mbox{\hyperlink{classrange}{range}}$<$ T, C $>$ \&other) const
+\item 
+\mbox{\Hypertarget{classrange_a7dbc81504477946a40e5042e0e98cde8}\label{classrange_a7dbc81504477946a40e5042e0e98cde8}} 
+bool {\bfseries equals} (const \mbox{\hyperlink{classrange}{range}}$<$ T, C $>$ \&other) const
+\item 
+\mbox{\Hypertarget{classrange_a9cbbbfada5e9e244ff5300af6cbf0e5d}\label{classrange_a9cbbbfada5e9e244ff5300af6cbf0e5d}} 
+void {\bfseries print\+\_\+range} ()
+\item 
+\mbox{\Hypertarget{classrange_abd8e1d1c9a46d74403dab930e0c061fb}\label{classrange_abd8e1d1c9a46d74403dab930e0c061fb}} 
+\mbox{\hyperlink{classrange}{range}} {\bfseries merge} (const \mbox{\hyperlink{classrange}{range}}$<$ T, C $>$ \&other) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename C = comp$<$\+T$>$$>$\newline
+class range$<$ T, C $>$}
+
+No destructor needed. You may also find it useful to define the following\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} precedes(\textcolor{keyword}{const} \mbox{\hyperlink{classrange}{range<T, C>}}\& other)\textcolor{keyword}{ const }\{ ...}
+\DoxyCodeLine{bool overlaps(\textcolor{keyword}{const} \mbox{\hyperlink{classrange}{range<T, C>}}\& other)\textcolor{keyword}{ const }\{ ...}
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/shrei/\+Personal/\+C\+S\+C 254/\+Templates/set.\+hpp\end{DoxyCompactItemize}

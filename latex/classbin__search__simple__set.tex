@@ -1,0 +1,134 @@
+\hypertarget{classbin__search__simple__set}{}\doxysection{bin\+\_\+search\+\_\+simple\+\_\+set$<$ T, C $>$ Class Template Reference}
+\label{classbin__search__simple__set}\index{bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}}
+
+
+{\ttfamily \#include $<$set.\+hpp$>$}
+
+Inheritance diagram for bin\+\_\+search\+\_\+simple\+\_\+set$<$ T, C $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classbin__search__simple__set}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbin__search__simple__set_a01d615d74103219a713f7a7016c99323}{bin\+\_\+search\+\_\+simple\+\_\+set}} (const int max)
+\begin{DoxyCompactList}\small\item\em fill in these methods\+: \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbin__search__simple__set_a40ae4308ad361a8ee6a88acfda881791}\label{classbin__search__simple__set_a40ae4308ad361a8ee6a88acfda881791}} 
+virtual \mbox{\hyperlink{classbin__search__simple__set_a40ae4308ad361a8ee6a88acfda881791}{$\sim$bin\+\_\+search\+\_\+simple\+\_\+set}} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classbin__search__simple__set_aef12b5e1fdba268c0f01d8e938af1b1f}{contains}} (const T \&item) const
+\begin{DoxyCompactList}\small\item\em Indicates whether item is in set. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$ T, C $>$ \& \mbox{\hyperlink{classbin__search__simple__set_ae59d6260dd072bb5249d16c2a8ac6c4a}{operator+=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Inserts item into set. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$ T, C $>$ \& \mbox{\hyperlink{classbin__search__simple__set_a950773084de16b2c1d085233d85defbf}{operator-\/=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Removes item from set, if it was there (otherwise does nothing) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classbin__search__simple__set_a69db65ca078d75cbdae8685958444bd3}\label{classbin__search__simple__set_a69db65ca078d75cbdae8685958444bd3}} 
+int {\bfseries binary\+\_\+search} (T ptr\mbox{[}$\,$\mbox{]}, T item, int low, int high)
+\item 
+\mbox{\Hypertarget{classbin__search__simple__set_a87881230ddde49d0fbcf5621fab8bb38}\label{classbin__search__simple__set_a87881230ddde49d0fbcf5621fab8bb38}} 
+int {\bfseries binary\+\_\+search\+\_\+remove} (T ptr\mbox{[}$\,$\mbox{]}, T item, int low, int high) const
+\item 
+\mbox{\Hypertarget{classbin__search__simple__set_ae3b9c438b36a8ccb0368cfe34cc193db}\label{classbin__search__simple__set_ae3b9c438b36a8ccb0368cfe34cc193db}} 
+void {\bfseries show\+Set} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename C = comp$<$\+T$>$$>$\newline
+class bin\+\_\+search\+\_\+simple\+\_\+set$<$ T, C $>$}
+
+Sorted array implementation of set; supports binary search. Requires instantiation with guaranteed upper bound on number of elements that may be placed in set. Throws overflow if bound is exceeded.
+
+\textquotesingle{}virtual\textquotesingle{} on \mbox{\hyperlink{classsimple__set}{simple\+\_\+set}} ensures single copy if multiply inherited 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbin__search__simple__set_a01d615d74103219a713f7a7016c99323}\label{classbin__search__simple__set_a01d615d74103219a713f7a7016c99323}} 
+\index{bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}!bin\_search\_simple\_set@{bin\_search\_simple\_set}}
+\index{bin\_search\_simple\_set@{bin\_search\_simple\_set}!bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{bin\_search\_simple\_set()}{bin\_search\_simple\_set()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$ T, C $>$\+::\mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}} (\begin{DoxyParamCaption}\item[{const int}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+fill in these methods\+: 
+
+constructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbin__search__simple__set_aef12b5e1fdba268c0f01d8e938af1b1f}\label{classbin__search__simple__set_aef12b5e1fdba268c0f01d8e938af1b1f}} 
+\index{bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}!contains@{contains}}
+\index{contains@{contains}!bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$$>$ \\
+virtual bool \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$ T, C $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Indicates whether item is in set. 
+
+Indicates whether item is in set. 
+
+Implements \mbox{\hyperlink{classsimple__set_a01f61dccabbf71ea75488756ae4af2a8}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classbin__range__set_aeb10a96b7b8ed10bac23c8aba0fce21e}{bin\+\_\+range\+\_\+set$<$ T, C $>$}}.
+
+\mbox{\Hypertarget{classbin__search__simple__set_ae59d6260dd072bb5249d16c2a8ac6c4a}\label{classbin__search__simple__set_ae59d6260dd072bb5249d16c2a8ac6c4a}} 
+\index{bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$$>$ \\
+virtual \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$T, C$>$\& \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$ T, C $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Inserts item into set. 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S += a += b += c;}
+\end{DoxyCode}
+ 
+
+Implements \mbox{\hyperlink{classsimple__set_ac6cdede4b06afa6df196129606b46398}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classbin__range__set_a86b4825ed6b5e221263fb412fd2d96df}{bin\+\_\+range\+\_\+set$<$ T, C $>$}}.
+
+\mbox{\Hypertarget{classbin__search__simple__set_a950773084de16b2c1d085233d85defbf}\label{classbin__search__simple__set_a950773084de16b2c1d085233d85defbf}} 
+\index{bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!bin\_search\_simple\_set$<$ T, C $>$@{bin\_search\_simple\_set$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T , typename C  = comp$<$\+T$>$$>$ \\
+virtual \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$T, C$>$\& \mbox{\hyperlink{classbin__search__simple__set}{bin\+\_\+search\+\_\+simple\+\_\+set}}$<$ T, C $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Removes item from set, if it was there (otherwise does nothing) 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S -\/= a -\/= b -\/= c;}
+\end{DoxyCode}
+ 
+
+Implements \mbox{\hyperlink{classsimple__set_aa426326cf50be901bdb251d487d84c48}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classbin__range__set_a195bc7482f56bd79a2b6404d75d2ff31}{bin\+\_\+range\+\_\+set$<$ T, C $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/shrei/\+Personal/\+C\+S\+C 254/\+Templates/set.\+hpp\end{DoxyCompactItemize}

@@ -554,6 +554,9 @@ class range {
             return false;
         }
     }
+    void print_range() {
+        cout << L << ", " << Linc << ", " << H << ", " << Hinc << std::endl;
+    }
 
     // range* split(const range<T, C>& other) const{
     //     //a result array that will cary the split range
@@ -849,7 +852,34 @@ class bin_range_set : public virtual range_set<T, C>,public bin_search_simple_se
         }
     }
     virtual bin_range_set<T,C>& operator-=(const range<T, C> item){
-    }   
+        for(int i = 0; i < size ; i++){
+            range <T,C> current_range = ptr[i];
+            //if the item is the same as an element, nothing to do here we just return
+            if(item.equals(current_range)){
+                *this -= ptr[i];
+                size--;
+                return *this;
+            }
+
+            if(item.overlaps(current_range)){
+                // range<T,C>* newRanges = ptr[i].split(item);
+
+
+
+            }
+
+            if(item.overlaps(current_range)){
+                ptr[i] = ptr[i].merge(item);
+                return *this;
+
+            }
+        }
+    } 
+    void showSet() {
+        for(int i=0; i<size; i++) {
+            ptr[i].print_range();
+        }
+    }  
  
 
 

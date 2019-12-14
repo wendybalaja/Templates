@@ -1,0 +1,123 @@
+\hypertarget{classcarray__simple__set}{}\doxysection{carray\+\_\+simple\+\_\+set$<$ T $>$ Class Template Reference}
+\label{classcarray__simple__set}\index{carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}}
+
+
+{\ttfamily \#include $<$set.\+hpp$>$}
+
+Inheritance diagram for carray\+\_\+simple\+\_\+set$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classcarray__simple__set}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcarray__simple__set_a475b3a5c7813393553520dfb886a15a6}{carray\+\_\+simple\+\_\+set}} (const T l, const T h)
+\begin{DoxyCompactList}\small\item\em fill in these methods\+: \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcarray__simple__set_a324882ace8ee57f674c3e02bea1fd04b}\label{classcarray__simple__set_a324882ace8ee57f674c3e02bea1fd04b}} 
+virtual \mbox{\hyperlink{classcarray__simple__set_a324882ace8ee57f674c3e02bea1fd04b}{$\sim$carray\+\_\+simple\+\_\+set}} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$ T $>$ \& \mbox{\hyperlink{classcarray__simple__set_aec4af208a09c5f2dadc2dbd01ccb2e13}{operator+=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Inserts item into set. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$ T $>$ \& \mbox{\hyperlink{classcarray__simple__set_a86aa7f8cbc9368b1cedee239aee075e3}{operator-\/=}} (const T item)
+\begin{DoxyCompactList}\small\item\em Removes item from set, if it was there (otherwise does nothing) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classcarray__simple__set_a084d826c875b8914f5d2628397a7cf15}{contains}} (const T \&item) const
+\begin{DoxyCompactList}\small\item\em Indicates whether item is in set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class carray\+\_\+simple\+\_\+set$<$ T $>$}
+
+Characteristic array implementation of set. Requires instantiation with guaranteed low and one-\/more-\/than-\/high bounds on elements that can be placed in the set. Should compile and run correctly for any element class T that can be cast to int. Throws \mbox{\hyperlink{classout__of__bounds}{out\+\_\+of\+\_\+bounds}} exception when appropriate. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcarray__simple__set_a475b3a5c7813393553520dfb886a15a6}\label{classcarray__simple__set_a475b3a5c7813393553520dfb886a15a6}} 
+\index{carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}!carray\_simple\_set@{carray\_simple\_set}}
+\index{carray\_simple\_set@{carray\_simple\_set}!carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{carray\_simple\_set()}{carray\_simple\_set()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$ T $>$\+::\mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}} (\begin{DoxyParamCaption}\item[{const T}]{l,  }\item[{const T}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+fill in these methods\+: 
+
+constructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcarray__simple__set_a084d826c875b8914f5d2628397a7cf15}\label{classcarray__simple__set_a084d826c875b8914f5d2628397a7cf15}} 
+\index{carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual bool \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Indicates whether item is in set. 
+
+Indicates whether item is in set. 
+
+Implements \mbox{\hyperlink{classsimple__set_a01f61dccabbf71ea75488756ae4af2a8}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classcarray__range__set_ace410feab4b7442451828a52c04bcf1f}{carray\+\_\+range\+\_\+set$<$ T, C, I $>$}}.
+
+\mbox{\Hypertarget{classcarray__simple__set_aec4af208a09c5f2dadc2dbd01ccb2e13}\label{classcarray__simple__set_aec4af208a09c5f2dadc2dbd01ccb2e13}} 
+\index{carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$T$>$\& \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$ T $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Inserts item into set. 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S += a += b += c;}
+\end{DoxyCode}
+ 
+
+Implements \mbox{\hyperlink{classsimple__set_ac6cdede4b06afa6df196129606b46398}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classcarray__range__set_a43a1771a4fe60f2756bb33b4eb315719}{carray\+\_\+range\+\_\+set$<$ T, C, I $>$}}.
+
+\mbox{\Hypertarget{classcarray__simple__set_a86aa7f8cbc9368b1cedee239aee075e3}\label{classcarray__simple__set_a86aa7f8cbc9368b1cedee239aee075e3}} 
+\index{carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!carray\_simple\_set$<$ T $>$@{carray\_simple\_set$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$T$>$\& \mbox{\hyperlink{classcarray__simple__set}{carray\+\_\+simple\+\_\+set}}$<$ T $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const T}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Removes item from set, if it was there (otherwise does nothing) 
+
+Returns a ref so you can say, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{S -\/= a -\/= b -\/= c;}
+\end{DoxyCode}
+ 
+
+Implements \mbox{\hyperlink{classsimple__set_aa426326cf50be901bdb251d487d84c48}{simple\+\_\+set$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classcarray__range__set_ac6d0f7614e0173a3f8d8e3e556e5f2c7}{carray\+\_\+range\+\_\+set$<$ T, C, I $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/shrei/\+Personal/\+C\+S\+C 254/\+Templates/set.\+hpp\end{DoxyCompactItemize}
