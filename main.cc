@@ -1,5 +1,4 @@
 #include "set.hpp"
-#include <cassert>
 
 int main() {
 
@@ -31,8 +30,6 @@ int main() {
     // cout << "\"aaa\" is " << (r2.contains("aaa") ? "" : "not ") << "in r2\n";
     // cout << "\"faa\" is " << (r2.contains("faa") ? "" : "not ") << "in r2\n";
 
-    // // The following will not work correctly yet:
-
     // carray_range_set<int> A(0, 100);
     // A += range<int>(4, true, 9, false);
     // A += range<int>(11, true, 15, true);
@@ -41,6 +38,39 @@ int main() {
     // cout << "5 is " << (A.contains(5) ? "" : "not ") << "in A\n";
     // cout << "9 is " << (A.contains(9) ? "" : "not ") << "in A\n";
     // cout << "15 is " << (A.contains(15) ? "" : "not ") << "in A\n";
+
+    // hashed_simple_set<int, cast_to_int<int>> H(100);
+    // H+= 4; H+= 10; H+= 98;
+    // H-=10;
+    // cout << "10 is " << (H.contains(10) ? "" : "not ") << "in H\n"; //is not
+    // cout << "19 is " << (H.contains(19) ? "" : "not ") << "in H\n"; //is not
+    // cout << "98 is " << (H.contains(98) ? "" : "not ") << "in H\n"; //is
+
+    // hashed_simple_set<double, cast_to_int<double>> H1(100);
+    // H1+= 3.14; H1+=2.8;
+    // cout << "3.14 is " << (H1.contains(3.14) ? "" : "not ") << "in H1\n"; //is
+    // H1-=2.8;
+    // cout << "2.8 is " << (H1.contains(2.8) ? "" : "not ") << "in H1\n"; // is not
+
+      hashed_range_set<int> s(100);
+    s += range<int>(4, true, 9, false);
+    s += range<int>(11, true, 15, true);
+    s -= range<int>(15, true, 15, true);
+    cout << "15 is " << (s.contains(15)? "" : "not ") << "in S\n"; //is not
+    cout << "18 is " << (s.contains(8)? "" : "not ") << "in S\n"; //is
+  /* 
+    hashed_range_set<int> A(100);
+    A += range<int>(4, true, 9, false);
+    A += range<int>(11, true, 15, true);
+    A -= range<int>(15, true, 15, true);
+    cout << "4 is " << (A.contains(4) ? "" : "not ") << "in A\n";
+    cout << "5 is " << (A.contains(5) ? "" : "not ") << "in A\n";
+    cout << "9 is " << (A.contains(9) ? "" : "not ") << "in A\n";
+    cout << "15 is " << (A.contains(15) ? "" : "not ") << "in A\n";
+*/
+
+    // // The following will not work correctly yet:
+
 
     // range_set<int>* X = new std_range_set<int>();
     // *X += range<int>(5, true, 8, false);

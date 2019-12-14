@@ -203,7 +203,6 @@ class hashed_simple_set : public virtual simple_set<T> {
   public:
     /// constructor
     hashed_simple_set(const int n): H(n), P(bigger_prime(n)) {    
-       
         ptr = new T[P];
     }
 
@@ -214,11 +213,12 @@ class hashed_simple_set : public virtual simple_set<T> {
 
     virtual hashed_simple_set<T, F>& operator+=(const T item) {
         int hash; 
+        int item_mod = (F()(item)) % H;
 
-        if(F(item) % H == 0){
+        if(item_mod  == 0){
           hash = 1; /* make sure F(e) is never 0 */
         }else{
-          hash = F(item) % H;
+          hash = item_mod ;
         }
 
         if((*(ptr+hash) != item) && (*(ptr+hash) != (T)0)){
@@ -240,21 +240,25 @@ class hashed_simple_set : public virtual simple_set<T> {
     }
     virtual hashed_simple_set<T, F>& operator-=(const T item) {
         
-        for(int i=1; i<= P; i++){
-          if(*(ptr+i*F(item)%H) == item){
-            *(ptr+i*F(item)%H) == (T)0;
-            return *this;
-          }
+        int item_mod= (F()(item)) % H;
+
+        for (int i=1; i <= P; i++){
+            if((*(ptr+i*item_mod)) == item){
+                (*(ptr+i*item_mod)) = (T) 0;
+                return *this;
+            }
         }
         return *this;
     }
+
     virtual bool contains(const T& item) const {
-       int hash = (F(item) % H);
-       if (hash == 0){
-        hash = 1;
+       int item_mod = (F()(item)) % H;
+
+       if (item_mod == 0){
+        item_mod = 1;
        }
        for (int i=1; i<=P; i++){
-        if(*(ptr+i*hash) == item) return true;
+        if(*(ptr+i*item_mod) == item) return true;
        }
 
        return false;
@@ -681,7 +685,7 @@ template<typename T, typename C = comp<T>, typename I = increment<T>>
 class carray_range_set : public virtual range_set<T, C>, public carray_simple_set<T> {
     // 'virtual' on range_set ensures single copy if multiply inherited
     static_assert(std::is_integral<T>::value, "Integral type required.");
-    C cmp;
+    C comp;
     I inc;
 
     static const out_of_bounds out_bounds_err;
@@ -689,7 +693,7 @@ class carray_range_set : public virtual range_set<T, C>, public carray_simple_se
   public:
 
     /* std_range_set */
-    carray_range_set(const T l, const T h) : carray_simple_set<T>(l, h), cmp(), inc() {}
+    carray_range_set(const T l, const T h) : carray_simple_set<T>(l, h), comp(), inc() {}
 
     virtual carray_simple_set<T>& operator+=(const T item) {
         return carray_simple_set<T>::operator+=(item);
@@ -703,7 +707,7 @@ class carray_range_set : public virtual range_set<T, C>, public carray_simple_se
         return carray_simple_set<T>::contains(item);
     }
 
-    virtual range_set<T>& operator+=(const range<T, C> r) {
+    virtual carray_range_set<T>& operator+=(const range<T, C> r) {
       
         for (T i = (r.closed_low() ? r.low() : inc(r.low()));
                 r.contains(i); i = inc(i)) {
@@ -712,10 +716,9 @@ class carray_range_set : public virtual range_set<T, C>, public carray_simple_se
         return *this;
     }
 
-    virtual range_set<T>& operator-=(const range<T, C> r) {
+    virtual carray_range_set<T>& operator-=(const range<T, C> r) {
 
-        for (T i = (r.closed_low() ? r.low() : inc(r.low())); r.contains(i); i = inc(i)) {
-
+        for (T i = (r.closed_low() ? r.low() : inc(r.low()));r.contains(i); i = inc(i)) {
             *this -= i;
 
         }
@@ -736,17 +739,37 @@ class carray_range_set : public virtual range_set<T, C>, public carray_simple_se
 //---------------------------------------------------------------
 
 /// Fill out
+
 template<typename T, typename F = cast_to_int<T>, typename C = comp<T>, typename I = increment<T>>
-class hashed_range_set : public virtual range_set<T, C> {
-    // 'virtual' on range_set ensures single copy if multiply inherited
-    static_assert(std::is_integral<T>::value, "Integral type required.");
+class hashed_range_set : public virtual range_set<T, C>, public hashed_simple_set<T, F>{
+    C comp;
     I inc;
-  public:
-    /**
-     * @throws overflow
-     */
-   // virtual hashed_range_set<T, F, C, I>& operator+=(const range<T, C> r) throw(overflow) = 0;
-};
+public:
+    hashed_range_set(const int n) : hashed_simple_set<T, F>(n), comp(), inc() {
+    }
+    virtual hashed_simple_set<T, F>& operator+=(const T item){
+        return hashed_simple_set<T,F>::operator+=(item);
+    }
+    virtual hashed_simple_set<T, F>& operator-=(const T item){
+        return hashed_simple_set<T,F>::operator-=(item);
+    }
+    virtual bool contains(const T& item) const {
+        return hashed_simple_set<T,F>::contains(item);
+    }
+    virtual hashed_range_set<T>& operator+=(const range<T, C> r) {
+          for (T i = (r.closed_low() ? r.low() : inc(r.low())); r.contains(i); i = inc(i)) {
+
+            *this += i;
+        }
+        return *this;
+    }
+    virtual hashed_range_set<T>& operator-=(const range<T, C> r) {
+       for (T i = (r.closed_low() ? r.low() : inc(r.low())); r.contains(i); i = inc(i)) {
+            *this -= i;
+        }
+        return *this;
+    }
+  };
 //---------------------------------------------------------------
 
 /// Fill out
